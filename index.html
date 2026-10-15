@@ -258,6 +258,11 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   .step-body{grid-area:body;margin-top:26px}
   .step-text .num{font-size:3.6rem;margin-bottom:2px}
   .step-text h3{font-size:1.6rem;margin-bottom:0}
+  /* the dotted arc stays still on phones, sits on the outer edge, and can never cross the text */
+  .ring.dots{animation:none;inset:-16px}
+  .circ-main,.step-row.flip .circ-main{margin-bottom:34px}
+  .step-head{position:relative;z-index:3}
+  .circ-sub,.step-row.flip .circ-sub{z-index:3}
 }
 </style>
 </head>
