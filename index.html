@@ -166,13 +166,28 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .hero.over h1,.hero.over .rolling{text-shadow:0 2px 24px rgba(0,0,0,.5)}
 .hero.over .rolling{color:#fff}
 .hero.over h1{max-width:13ch;font-size:clamp(2.7rem,6.2vw,5.4rem)}
+.hero.over.short,.hero.over.short .hero-body{min-height:78svh}
+.hero.over.short h1{font-size:clamp(2.6rem,5.8vw,5rem)}
+
+/* images sliding in from each side */
+.anim .slide-l{opacity:0;transform:translateX(-90px)}
+.anim .slide-r{opacity:0;transform:translateX(90px)}
+.anim .slide-l.in,.anim .slide-r.in{opacity:1;transform:none;transition:opacity 1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+/* WhatsApp */
+.fab.wa{background:#25D366;color:#fff}
+.fab.wa:hover{background:#1FB957}
+.contact-info a.wa-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);border-radius:999px;padding:.6em 1.25em;font-size:.95rem;transition:background .3s,color .3s,border-color .3s}
+.contact-info a.wa-btn svg{width:20px;height:20px;color:#1FB957}
+.contact-info a.wa-btn:hover{background:#25D366;border-color:#25D366;color:#fff}
+.contact-info a.wa-btn:hover svg{color:#fff}
+.mbar .msg.wa{background:#25D366;border-color:#25D366;color:#fff}
 
 /* ---- home page ---- */
 .intro-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,100px);align-items:center}
 .intro-text .btn-row{margin-top:30px}
 .intro-pics{position:relative;height:clamp(420px,46vw,620px)}
 .p-a{position:absolute;right:0;top:0;width:74%;height:80%}
-.p-b{position:absolute;left:0;bottom:0;width:46%;height:52%;outline:12px solid var(--bg)}
+.p-b{position:absolute;left:0;bottom:0;width:46%;height:52%;box-shadow:0 0 0 10px var(--bg),0 0 0 11px var(--ink)}
 .choice{background:var(--alt)}
 .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px);margin-top:46px}
 .pc{display:block;text-decoration:none;color:var(--ink)}
@@ -203,6 +218,14 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .step-text .lab{display:block;color:var(--muted);margin-bottom:8px}
 .step-text h3{font-size:clamp(1.9rem,3.4vw,2.9rem);margin-bottom:16px}
 .step-text p{max-width:46ch}
+.rev2{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,6vw,100px);align-items:center}
+.rev2 .rule{border:0;border-top:1px solid var(--line);margin:30px 0 24px}
+.stars5{display:flex;gap:6px}
+.stars5 svg{width:24px;height:24px;fill:var(--accent)}
+.rate{display:flex;align-items:baseline;gap:14px;margin:10px 0 8px}
+.rate b{font:400 clamp(4rem,8vw,6.2rem)/1 var(--serif)}
+.rate span{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:.85rem}
+.glink{display:inline-block;margin-top:20px;letter-spacing:.1em;text-transform:uppercase;font-size:.82rem;border-bottom:1px solid var(--ink);padding-bottom:3px;text-decoration:none}
 .reviews-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,96px);align-items:center}
 .rev-pic{height:clamp(380px,40vw,560px)}
 .slides{display:grid}
@@ -216,9 +239,19 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .dots button.on::after{content:"";position:absolute;inset:0;background:var(--ink);transform-origin:left;animation:fill 6s linear both}
 @keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (max-width:900px){
-  .intro-grid,.choice-grid,.step-row,.reviews-grid{grid-template-columns:1fr}
+  .intro-grid,.choice-grid,.reviews-grid,.rev2{grid-template-columns:1fr}
   .step-row.flip .step-pics{order:0}
-  .step-pics{height:min(480px,120vw)}
+  .step-row,.step-row.flip{grid-template-columns:44% 1fr;grid-template-areas:"main main" "sub head" "body body";column-gap:20px;row-gap:0}
+  .step-row.flip{grid-template-columns:1fr 44%;grid-template-areas:"main main" "head sub" "body body"}
+  .step-pics,.step-text{display:contents}
+  .circ{position:relative;left:auto;right:auto;top:auto;bottom:auto}
+  .circ-main,.step-row.flip .circ-main{grid-area:main;width:78%;margin:22px 0 0 auto}
+  .step-row.flip .circ-main{margin:22px auto 0 0}
+  .circ-sub,.step-row.flip .circ-sub{grid-area:sub;width:100%;margin-top:-20%;z-index:2}
+  .step-head{grid-area:head;align-self:center}
+  .step-body{grid-area:body;margin-top:26px}
+  .step-text .num{font-size:3.6rem;margin-bottom:2px}
+  .step-text h3{font-size:1.6rem;margin-bottom:0}
 }
 </style>
 </head>
@@ -234,7 +267,7 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
       <a class="link" href="design-services.html">Design services</a>
       <a class="link" href="#projects">Projects</a>
       <a class="link" href="#contact">Contact</a>
-      <a class="btn btn-dark" href="#contact">Start your project</a>
+      <a class="btn btn-dark" href="#contact">Enquire with us</a>
     </nav>
   </div>
 </header>
@@ -253,11 +286,11 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
       <div class="rolling"><ul>
         <li>Affordable interior design</li>
         <li>Online e-design</li>
-        <li>CAD plans and visuals</li>
-        <li>Interior styling</li>
+        <li>Furniture floor layouts</li>
+        <li>3D visuals</li>
       </ul></div>
       <div class="btn-row">
-        <a class="btn btn-cream" href="#contact">Start your project</a>
+        <a class="btn btn-cream" href="#contact">Enquire with us</a>
         <a class="btn btn-ghost-light" href="design-services.html">See our packages</a>
       </div>
     </div>
@@ -268,15 +301,14 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
     <div class="wrap intro-grid">
       <div class="intro-text">
         <h2 class="reveal">Enhance your well-being through thoughtfully designed spaces.</h2>
-        <p class="lede reveal" style="margin-top:22px">We design for both residential and commercial projects.</p>
-        <p class="reveal">Our design services are tailored to your individual requirements, whether you're looking for a simple home refurbishment or a full property redesign. We work with you at your own pace and to your budget.</p>
+        <p class="reveal" style="margin-top:24px">Our design services are tailored to your individual requirements, whether you're looking for a simple home refurbishment or a full property redesign. We work with you at your own pace and to your budget.</p>
         <div class="btn-row reveal">
-          <a class="btn btn-dark" href="#contact">Start your project</a>
+          <a class="btn btn-dark" href="#contact">Enquire with us</a>
         </div>
       </div>
       <div class="intro-pics">
-        <div class="frame clip p-a" data-speed="-0.05"><img src="https://static.wixstatic.com/media/c6d174_b061c15d03cc4348b80450c02a9824f8~mv2.jpg/v1/fill/w_1100,h_900,al_c,q_85,enc_auto/c6d174_b061c15d03cc4348b80450c02a9824f8~mv2.jpg" alt="Snug with navy sofas and a floral rug"></div>
-        <div class="frame clip p-b" data-speed="0.07"><img src="https://static.wixstatic.com/media/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg/v1/fill/w_700,h_760,al_c,q_85,enc_auto/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg" alt="Styled console with vases and artwork"></div>
+        <div class="frame slide-r p-a"><img src="https://static.wixstatic.com/media/c6d174_b061c15d03cc4348b80450c02a9824f8~mv2.jpg/v1/fill/w_1100,h_900,al_c,q_85,enc_auto/c6d174_b061c15d03cc4348b80450c02a9824f8~mv2.jpg" alt="Snug with navy sofas and a floral rug"></div>
+        <div class="frame slide-l p-b"><img src="https://static.wixstatic.com/media/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg/v1/fill/w_700,h_760,al_c,q_85,enc_auto/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg" alt="Styled console with vases and artwork"></div>
       </div>
     </div>
   </section>
@@ -309,11 +341,15 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
             <div class="circ circ-main" data-speed="-0.04"><div class="frame clip"><img src="https://unsplash.com/photos/wq9K9HFK--s/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_b131ffa005fd40d9bc454cb59b73ecd3~mv2.jpeg'" alt="Woman working at a table with plants"></div><i class="ring dots" aria-hidden="true"></i></div>
             <div class="circ circ-sub" data-speed="0.07"><div class="frame clip"><img src="https://unsplash.com/photos/wIgQqekgK7Q/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg'" alt="Laptop on a round table"></div><i class="ring thin" aria-hidden="true"></i></div>
           </div>
-          <div class="step-text reveal">
-            <span class="num">01</span>
-            <span class="lab">Step one</span>
-            <h3>Gathering the brief</h3>
-            <p>It starts with a questionnaire and an online chat. This is where we fact find and pull your brief together.</p>
+          <div class="step-text">
+            <div class="step-head reveal">
+              <span class="num">01</span>
+              <span class="lab">Step one</span>
+              <h3>Gathering the brief</h3>
+            </div>
+            <div class="step-body reveal">
+              <p>It starts with a questionnaire and an online chat. This is where we fact find and pull your brief together.</p>
+            </div>
           </div>
         </article>
         <article class="step-row flip">
@@ -321,11 +357,15 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
             <div class="circ circ-main" data-speed="-0.05"><div class="frame clip"><img src="https://unsplash.com/photos/pjQAGRNehew/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_6ffe7312963b42bfa78b3a0105b9a58b~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_6ffe7312963b42bfa78b3a0105b9a58b~mv2.jpg'" alt="Room with a round table and plant"></div><i class="ring dots" aria-hidden="true"></i></div>
             <div class="circ circ-sub" data-speed="0.06"><div class="frame clip"><img src="https://unsplash.com/photos/8lo6Gf0_3GE/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg'" alt="Brick wall interior with a plant"></div><i class="ring thin" aria-hidden="true"></i></div>
           </div>
-          <div class="step-text reveal">
-            <span class="num">02</span>
-            <span class="lab">Step two</span>
-            <h3>Photos and measurements</h3>
-            <p>At this point we need some photographs and measurements of the space, don't worry about the measuring as we have a handy guide to show you how and what we need.</p>
+          <div class="step-text">
+            <div class="step-head reveal">
+              <span class="num">02</span>
+              <span class="lab">Step two</span>
+              <h3>Photos and measurements</h3>
+            </div>
+            <div class="step-body reveal">
+              <p>At this point we need some photographs and measurements of the space, don't worry about the measuring as we have a handy guide to show you how and what we need.</p>
+            </div>
           </div>
         </article>
         <article class="step-row">
@@ -333,11 +373,15 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
             <div class="circ circ-main" data-speed="-0.04"><div class="frame clip"><img src="https://unsplash.com/photos/lztBzPVbx8k/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_b27bb364c6644a1ab294d8f71bcfd633~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_b27bb364c6644a1ab294d8f71bcfd633~mv2.jpg'" alt="Floor plan on a computer screen"></div><i class="ring dots" aria-hidden="true"></i></div>
             <div class="circ circ-sub" data-speed="0.07"><div class="frame clip"><img src="https://unsplash.com/photos/2Utf0WyYOPI/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_d208bed113f24b80a33b1bf26b2e4f59~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_d208bed113f24b80a33b1bf26b2e4f59~mv2.jpg'" alt="Desk with a computer and keyboard"></div><i class="ring thin" aria-hidden="true"></i></div>
           </div>
-          <div class="step-text reveal">
-            <span class="num">03</span>
-            <span class="lab">Step three</span>
-            <h3>Furniture layout</h3>
-            <p>Once we have gathered all the info we begin by planning the space using a 2D floorplan and making sure existing or new furniture fits. We won’t proceed from here until you are fully happy with how the space flows.</p>
+          <div class="step-text">
+            <div class="step-head reveal">
+              <span class="num">03</span>
+              <span class="lab">Step three</span>
+              <h3>Furniture layout</h3>
+            </div>
+            <div class="step-body reveal">
+              <p>Once we have gathered all the info we begin by planning the space using a 2D floorplan and making sure existing or new furniture fits. We won’t proceed from here until you are fully happy with how the space flows.</p>
+            </div>
           </div>
         </article>
         <article class="step-row flip">
@@ -345,11 +389,15 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
             <div class="circ circ-main" data-speed="-0.05"><div class="frame clip"><img src="https://unsplash.com/photos/ST-QAmN8BIk/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg'" alt="Material and fabric samples"></div><i class="ring dots" aria-hidden="true"></i></div>
             <div class="circ circ-sub" data-speed="0.06"><div class="frame clip"><img src="https://unsplash.com/photos/cLkKF4dc-ls/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg'" alt="Colour swatch cards and a keyboard"></div><i class="ring thin" aria-hidden="true"></i></div>
           </div>
-          <div class="step-text reveal">
-            <span class="num">04</span>
-            <span class="lab">Step four</span>
-            <h3>We work on your scheme</h3>
-            <p>When the floorplan is approved its time for you to sit back and relax whilst we work on your interior scheme, expect paint &amp; flooring suggestions, moodboards, an interactive shopping list, handy guides and more.</p>
+          <div class="step-text">
+            <div class="step-head reveal">
+              <span class="num">04</span>
+              <span class="lab">Step four</span>
+              <h3>We work on your scheme</h3>
+            </div>
+            <div class="step-body reveal">
+              <p>When the floorplan is approved its time for you to sit back and relax whilst we work on your interior scheme, expect paint &amp; flooring suggestions, moodboards, an interactive shopping list, handy guides and more.</p>
+            </div>
           </div>
         </article>
         <article class="step-row">
@@ -357,12 +405,16 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
             <div class="circ circ-main" data-speed="-0.04"><div class="frame clip"><img src="https://unsplash.com/photos/UV2-rFyRZLI/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg'" alt="Laptop and notebook on a desk"></div><i class="ring dots" aria-hidden="true"></i></div>
             <div class="circ circ-sub" data-speed="0.07"><div class="frame clip"><img src="https://unsplash.com/photos/r7pf5XhmtbM/download?force=true&amp;w=1400" onerror="this.onerror=null;this.src='https://static.wixstatic.com/media/c6d174_d208bed113f24b80a33b1bf26b2e4f59~mv2.jpg/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/c6d174_d208bed113f24b80a33b1bf26b2e4f59~mv2.jpg'" alt="Styled home office"></div><i class="ring thin" aria-hidden="true"></i></div>
           </div>
-          <div class="step-text reveal">
-            <span class="num">05</span>
-            <span class="lab">Step five</span>
-            <h3>Shopping &amp; implementing</h3>
-            <p>Once you have received your interior presentation you will be equipped to implement the design and shop all your scheme products via the interactive shopping list included. We will still be on hand at this point for any support you need.</p>
-          <div class="btn-row" style="margin-top:8px"><a class="btn btn-dark" href="#contact">Start your project</a><a class="btn btn-line" href="design-services.html">See our packages</a></div>
+          <div class="step-text">
+            <div class="step-head reveal">
+              <span class="num">05</span>
+              <span class="lab">Step five</span>
+              <h3>Shopping &amp; implementing</h3>
+            </div>
+            <div class="step-body reveal">
+              <p>Once you have received your interior presentation you will be equipped to implement the design and shop all your scheme products via the interactive shopping list included. We will still be on hand at this point for any support you need.</p>
+            <div class="btn-row" style="margin-top:8px"><a class="btn btn-dark" href="#contact">Enquire with us</a><a class="btn btn-line" href="design-services.html">See our packages</a></div>
+            </div>
           </div>
         </article>
       </div>
@@ -391,20 +443,25 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 
   <!-- 6. Reviews -->
   <section id="reviews">
-    <div class="wrap reviews-grid">
-      <div class="frame clip rev-pic"><img src="https://static.wixstatic.com/media/c6d174_b7c2f95e2afd46159a824585c2ffaa65~mv2.jpg/v1/fill/w_1000,h_1100,al_c,q_85,enc_auto/c6d174_b7c2f95e2afd46159a824585c2ffaa65~mv2.jpg" alt="Cream living room"></div>
+    <div class="wrap rev2">
+      <div class="rev-left">
+        <h2 class="reveal">Words from our lovely clients</h2>
+        <p class="reveal" style="margin-top:20px;max-width:40ch">Every room we design is built around the people who use it. Here is what some of our clients say, with more on Google.</p>
+        <hr class="rule reveal">
+        <div class="stars5 reveal" aria-label="Five stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg></div>
+        <div class="rate reveal"><b>5.0</b><span>Out of 5</span></div>
+        <p class="small reveal" style="margin:0">Average rating from [number] Google reviews</p>
+        <p class="small reveal" style="margin:8px 0 0;font-style:italic">Placeholder: Rosa to confirm her Google rating and review count.</p>
+        <a class="glink reveal" href="#" onclick="return false">Read the reviews on Google</a>
+      </div>
       <div>
-        <h2 class="reveal" style="margin-bottom:30px">Words from our lovely clients</h2>
         <div class="slides reveal" id="slides">
           <div class="slide on"><blockquote>“Emma listened and quickly put together some great concepts that we fell in love with from the word go.”</blockquote><cite>H&amp;P, Greater Manchester</cite></div>
           <div class="slide"><blockquote>“Rosa Rose Design produced a number of fantastic options for us to consider. Rosa Rose Design were helpful, friendly and the designs were of a very high standard.”</blockquote><cite>M, Greater Manchester</cite></div>
           <div class="slide"><blockquote>“They were so approachable and friendly from the start making me feel comfortable and confident.”</blockquote><cite>L, London</cite></div>
           <div class="slide"><blockquote>“We are so pleased with our new bedroom scheme from Rosa Rose Design, the process was really easy and we felt at ease straight away.”</blockquote><cite>C&amp;D, Greater Manchester</cite></div>
         </div>
-        <div class="rev-ctrl reveal">
-          <div class="dots" id="dots"></div>
-          <a class="btn btn-line" href="#" onclick="return false">Read our Google reviews</a>
-        </div>
+        <div class="rev-ctrl reveal"><div class="dots" id="dots"></div></div>
       </div>
     </div>
   </section>
@@ -415,7 +472,7 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
     <div class="cta-text reveal">
       <h2>Ready to design your perfect home?</h2>
       <p>Tell us about your room and we'll show you the best way to start, at your pace and to your budget.</p>
-      <div class="btn-row"><a class="btn btn-dark" href="#contact">Start your project</a></div>
+      <div class="btn-row"><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
     </div>
   </section>
 </main>
@@ -427,6 +484,7 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
       <p class="lede" style="margin-top:14px">We would love to discuss your project.</p>
       <p style="margin-top:26px"><a href="tel:+447861499710">07861 499710</a></p>
       <p><a href="mailto:rosarosedesigninteriors@outlook.com">rosarosedesigninteriors@outlook.com</a></p>
+      <p style="margin-top:18px"><a class="wa-btn" href="https://wa.me/447861499710" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg> Message us on WhatsApp</a></p>
       <p class="small">Greater Manchester, UK</p>
       <div class="socials">
         <a href="https://www.instagram.com/rosa_rose_design/">Instagram</a>
@@ -446,7 +504,7 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
           <label>Package<select name="pkg" id="pkgSelect"><option>Not sure yet</option><option>Essentials</option><option>Deluxe</option><option>Bespoke</option></select></label>
         </div>
         <label>Tell us about your project<textarea name="msg" id="msg"></textarea></label>
-        <div><button class="btn btn-dark" type="submit">Start your project</button></div>
+        <div><button class="btn btn-dark" type="submit">Enquire with us</button></div>
       </form>
       <div class="thanks" id="thanks">Thanks for submitting! We'll be in touch soon.</div>
     </div>
@@ -479,8 +537,8 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   </div>
   <div class="wrap small" style="margin-top:36px">© 2026 Rosa Rose Design Ltd. Greater Manchester, UK</div>
 </footer>
-<a class="fab" href="#contact" aria-label="Message us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></a>
-<div class="mbar"><a class="btn btn-line msg" href="#contact" aria-label="Message us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></a><a class="btn btn-dark" href="#contact">Start your project</a></div>
+<a class="fab wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a>
+<div class="mbar"><a class="btn msg wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
 
 <script>
 (function(){
@@ -503,7 +561,7 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   nav.addEventListener('click', function(e){ if(e.target.closest('a')){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } });
 
   /* reveals and image wipes */
-  var items = document.querySelectorAll('.reveal, .clip, [data-io]');
+  var items = document.querySelectorAll('.reveal, .clip, .slide-l, .slide-r, [data-io]');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(es){
       es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in','in-view'); io.unobserve(en.target); } });
