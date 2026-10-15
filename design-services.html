@@ -169,6 +169,25 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .hero.over.short,.hero.over.short .hero-body{min-height:78svh}
 .hero.over.short h1{font-size:clamp(2.6rem,5.8vw,5rem)}
 
+/* images sliding in from each side */
+.anim .slide-l{opacity:0;transform:translateX(-90px)}
+.anim .slide-r{opacity:0;transform:translateX(90px)}
+.anim .slide-l.in,.anim .slide-r.in{opacity:1;transform:none;transition:opacity 1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+/* WhatsApp */
+.fab.wa{background:#25D366;color:#fff}
+.fab.wa:hover{background:#1FB957}
+.contact-info a.wa-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);border-radius:999px;padding:.6em 1.25em;font-size:.95rem;transition:background .3s,color .3s,border-color .3s}
+.contact-info a.wa-btn svg{width:20px;height:20px;color:#1FB957}
+.contact-info a.wa-btn:hover{background:#25D366;border-color:#25D366;color:#fff}
+.contact-info a.wa-btn:hover svg{color:#fff}
+.mbar .msg.wa{background:#25D366;border-color:#25D366;color:#fff}
+
+/* phones: no scroll-drift, so circles and step text never overlap */
+@media (max-width:900px){
+  [data-speed]{transform:none!important}
+  .cta-split .cta-pic img{top:0;height:100%}
+}
+
 /* ---- design services page ---- */
 .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(36px,4vw,60px)}
 .sec-head p{margin:0}
@@ -261,7 +280,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
       <a class="link" href="#packages" aria-current="page">Design services</a>
       <a class="link" href="index.html#projects">Projects</a>
       <a class="link" href="#contact">Contact</a>
-      <a class="btn btn-dark" href="#contact">Start your project</a>
+      <a class="btn btn-dark" href="#contact">Enquire with us</a>
     </nav>
   </div>
 </header>
@@ -282,7 +301,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
       </ul></div>
       <div class="btn-row">
         <a class="btn btn-cream" href="#packages">See the packages</a>
-        <a class="btn btn-ghost-light" href="#contact">Start your project</a>
+        <a class="btn btn-ghost-light" href="#contact">Enquire with us</a>
       </div>
     </div>
   </section>
@@ -368,14 +387,14 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
           <div class="ex">
             <div class="frame"><img src="https://static.wixstatic.com/media/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg/v1/fill/w_700,h_420,al_c,q_85,enc_auto/c6d174_ef9e9d34cea1401b97121626a6f08993~mv2.jpg" alt="Hallway and stairs"></div>
             <div class="ex-body">
-              <b>Site survey</b><small>Placeholder: short description of the service</small>
+              <b>Site survey</b><small>We can measure the space for you.</small>
               <div class="ex-foot"><span class="p">£149</span><button class="btn btn-line" type="button" data-extra="Site survey" data-price="149" aria-pressed="false">Add</button></div>
             </div>
           </div>
           <div class="ex">
             <div class="frame"><img src="https://static.wixstatic.com/media/c6d174_6627171d332e401eadb577b93f1f1bc0~mv2.jpg/v1/fill/w_700,h_420,al_c,q_85,enc_auto/c6d174_6627171d332e401eadb577b93f1f1bc0~mv2.jpg" alt="Fitted kitchen joinery"></div>
             <div class="ex-body">
-              <b>Joinery drawings</b><small>Placeholder: short description of the service</small>
+              <b>Joinery drawings</b><small>We create detailed elevations and drawings.</small>
               <div class="ex-foot"><span class="p">£179</span><button class="btn btn-line" type="button" data-extra="Joinery drawings" data-price="179" aria-pressed="false">Add</button></div>
             </div>
           </div>
@@ -444,7 +463,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
   <!-- 5. FAQ -->
   <section style="background:var(--alt)">
     <div class="wrap faq-grid">
-      <div class="frame clip faq-pic"><img src="https://static.wixstatic.com/media/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg/v1/fill/w_900,h_1100,al_c,q_85,enc_auto/c6d174_f86683c5ccd540b7bde9294f4279e8bc~mv2.jpg" alt="Paint swatches"></div>
+      <div class="frame clip faq-pic"><img src="https://static.wixstatic.com/media/ccfa30_749d47f733f246dbb69e39fa240c2bc5~mv2.png/v1/fill/w_1100,h_1300,al_c,q_85,enc_auto/Interior%20Design_edited.png" alt="Living room with an orange sofa and a copper coffee table"></div>
       <div>
         <h2 class="reveal" style="margin-bottom:26px">Questions about the packages</h2>
         <div class="faq reveal">
@@ -463,7 +482,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
     <div class="cta-text reveal">
       <h2>Not sure which package suits you?</h2>
       <p>Tell us about your room and we'll point you to the right one.</p>
-      <div class="btn-row"><a class="btn btn-dark" href="#contact">Start your project</a></div>
+      <div class="btn-row"><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
     </div>
   </section>
 </main>
@@ -475,6 +494,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
       <p class="lede" style="margin-top:14px">We would love to discuss your project.</p>
       <p style="margin-top:26px"><a href="tel:+447861499710">07861 499710</a></p>
       <p><a href="mailto:rosarosedesigninteriors@outlook.com">rosarosedesigninteriors@outlook.com</a></p>
+      <p style="margin-top:18px"><a class="wa-btn" href="https://wa.me/447861499710" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg> Message us on WhatsApp</a></p>
       <p class="small">Greater Manchester, UK</p>
       <div class="socials">
         <a href="https://www.instagram.com/rosa_rose_design/">Instagram</a>
@@ -494,7 +514,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
           <label>Package<select name="pkg" id="pkgSelect"><option>Not sure yet</option><option>Essentials</option><option>Deluxe</option><option>Bespoke</option></select></label>
         </div>
         <label>Tell us about your project<textarea name="msg" id="msg"></textarea></label>
-        <div><button class="btn btn-dark" type="submit">Start your project</button></div>
+        <div><button class="btn btn-dark" type="submit">Enquire with us</button></div>
       </form>
       <div class="thanks" id="thanks">Thanks for submitting! We'll be in touch soon.</div>
     </div>
@@ -527,8 +547,8 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
   </div>
   <div class="wrap small" style="margin-top:36px">© 2026 Rosa Rose Design Ltd. Greater Manchester, UK</div>
 </footer>
-<a class="fab" href="#contact" aria-label="Message us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></a>
-<div class="mbar"><a class="btn btn-line msg" href="#contact" aria-label="Message us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H10l-5 4v-4H4z"/></svg></a><a class="btn btn-dark" href="#contact">Start your project</a></div>
+<a class="fab wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a>
+<div class="mbar"><a class="btn msg wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
 
 <script>
 (function(){
@@ -551,7 +571,7 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
   nav.addEventListener('click', function(e){ if(e.target.closest('a')){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); } });
 
   /* reveals and image wipes */
-  var items = document.querySelectorAll('.reveal, .clip, [data-io]');
+  var items = document.querySelectorAll('.reveal, .clip, .slide-l, .slide-r, [data-io]');
   if('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(es){
       es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in','in-view'); io.unobserve(en.target); } });
@@ -565,7 +585,9 @@ table.compare{width:100%;border-collapse:collapse;min-width:640px}
     var ticking = false;
     function para(){
       var vh = window.innerHeight;
+      var wide = window.innerWidth > 900;
       par.forEach(function(el){
+        if(!wide){ el.style.transform = ''; return; }
         var r = el.getBoundingClientRect();
         if(r.bottom < -200 || r.top > vh + 200) return;
         var s = parseFloat(el.getAttribute('data-speed'));
