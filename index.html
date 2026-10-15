@@ -177,9 +177,9 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .fab.wa{background:#25D366;color:#fff}
 .fab.wa:hover{background:#1FB957}
 .contact-info a.wa-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--ink);border-radius:999px;padding:.6em 1.25em;font-size:.95rem;transition:background .3s,color .3s,border-color .3s}
-.contact-info a.wa-btn svg{width:20px;height:20px;color:#1FB957}
-.contact-info a.wa-btn:hover{background:#25D366;border-color:#25D366;color:#fff}
-.contact-info a.wa-btn:hover svg{color:#fff}
+.contact-info a.wa-btn svg{width:20px;height:20px;color:var(--ink)}
+.contact-info a.wa-btn:hover{background:var(--ink);border-color:var(--ink);color:#F7F1EB}
+.contact-info a.wa-btn:hover svg{color:#F7F1EB}
 .mbar .msg.wa{background:#25D366;border-color:#25D366;color:#fff}
 
 /* phones: no scroll-drift, so circles and step text never overlap */
@@ -187,6 +187,29 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   [data-speed]{transform:none!important}
   .cta-split .cta-pic img{top:0;height:100%}
 }
+
+/* ordinary online chat box (replaces the floating WhatsApp button) */
+.fab.chat{background:var(--ink);color:#F7F1EB;border:0;cursor:pointer;padding:0}
+.fab.chat:hover{background:var(--accent)}
+.chat-panel{position:fixed;right:20px;bottom:92px;z-index:70;width:min(340px,calc(100vw - 32px));background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.22);overflow:hidden;transform-origin:bottom right;animation:chatin .35s cubic-bezier(.2,.7,.2,1) both}
+.chat-panel[hidden]{display:none}
+@keyframes chatin{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+.chat-head{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#F7F1EB;padding:14px 16px}
+.chat-head b{font:400 1.1rem var(--serif)}
+.chat-head button{background:none;border:0;color:inherit;font-size:1.6rem;line-height:1;cursor:pointer;padding:0 4px}
+.chat-body{padding:16px}
+.chat-msg{background:var(--card);border:1px solid var(--line);border-radius:14px 14px 14px 4px;padding:.7em 1em;font-size:.95rem;max-width:90%}
+.chat-form{display:grid;gap:10px;padding:0 16px 16px}
+.chat-form input,.chat-form textarea{border-radius:10px;padding:.7em .9em;font-size:.95rem}
+.chat-form textarea{min-height:72px}
+.chat-form .btn{justify-content:center}
+.chat-thanks{display:none;padding:0 16px 22px;font-size:.95rem}
+@media (max-width:980px){.chat-panel{bottom:calc(88px + env(safe-area-inset-bottom,0px));right:16px}}
+/* extras tick boxes in the enquiry form */
+.extras-pick{border:0;margin:0;padding:0;display:grid;gap:10px}
+.extras-pick legend{font-size:.92rem;color:var(--muted);padding:0;margin-bottom:8px}
+.chk{display:flex;align-items:center;gap:12px;font-size:1rem;color:var(--ink);cursor:pointer}
+.chk input{width:20px;height:20px;padding:0;accent-color:var(--ink);flex:none}
 
 /* ---- home page ---- */
 .intro-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,100px);align-items:center}
@@ -333,9 +356,9 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
           <div class="pic"><img src="https://static.wixstatic.com/media/c6d174_68575c71836440d9915022d98d4e64f0~mv2.jpg/v1/fill/w_1400,h_1000,al_c,q_85,enc_auto/c6d174_68575c71836440d9915022d98d4e64f0~mv2.jpg" alt="Newbuild living room scheme"><div class="txt"><h3>Online interior design</h3><span>From £299</span></div></div>
           <span class="btn btn-dark go">See how it works</span>
         </a>
-        <a class="pc reveal" href="design-services.html">
-          <div class="pic"><img src="https://static.wixstatic.com/media/c6d174_6ffe7312963b42bfa78b3a0105b9a58b~mv2.jpg/v1/fill/w_1400,h_1000,al_c,q_85,enc_auto/c6d174_6ffe7312963b42bfa78b3a0105b9a58b~mv2.jpg" alt="Living room with fireplace and armchairs"><div class="txt"><h3>Design packages</h3><span>From £299</span></div></div>
-          <span class="btn btn-dark go">See our packages</span>
+        <a class="pc reveal" href="design-services.html#extras">
+          <div class="pic"><img src="https://static.wixstatic.com/media/c6d174_b7c2f95e2afd46159a824585c2ffaa65~mv2.jpg/v1/fill/w_1400,h_1000,al_c,q_85,enc_auto/c6d174_b7c2f95e2afd46159a824585c2ffaa65~mv2.jpg" alt="Styled cream living room"><div class="txt"><h3>Home styling</h3><span>From £199</span></div></div>
+          <span class="btn btn-dark go">Explore home styling</span>
         </a>
       </div>
     </div>
@@ -512,8 +535,13 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
         </div>
         <div class="row2">
           <label>Phone (optional)<input type="tel" name="phone" autocomplete="tel"></label>
-          <label>Package<select name="pkg" id="pkgSelect"><option>Not sure yet</option><option>Essentials</option><option>Deluxe</option><option>Bespoke</option></select></label>
+          <label>Package<select name="pkg" id="pkgSelect"><option>Not sure yet</option><option>Essentials</option><option>Deluxe</option><option>Bespoke</option><option>Home styling</option></select></label>
         </div>
+        <fieldset class="extras-pick"><legend>Optional extras (tick any you would like)</legend>
+          <label class="chk"><input type="checkbox" name="extra" value="Site survey"><span>Site survey</span></label>
+          <label class="chk"><input type="checkbox" name="extra" value="Joinery drawings"><span>Joinery drawings</span></label>
+          <label class="chk"><input type="checkbox" name="extra" value="Finishing touches, styling and accessories"><span>Finishing touches, styling and accessories</span></label>
+        </fieldset>
         <label>Tell us about your project<textarea name="msg" id="msg"></textarea></label>
         <div><button class="btn btn-dark" type="submit">Enquire with us</button></div>
       </form>
@@ -548,8 +576,19 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   </div>
   <div class="wrap small" style="margin-top:36px">© 2026 Rosa Rose Design Ltd. Greater Manchester, UK</div>
 </footer>
-<a class="fab wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a>
-<div class="mbar"><a class="btn msg wa" href="https://wa.me/447861499710" target="_blank" rel="noopener" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.5A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15l-.3-.18-3.1.89.9-3-.2-.32A8.1 8.1 0 0 1 12.04 3.8zm-3.3 4.1c-.2 0-.5.07-.75.35-.25.27-.97.95-.97 2.3 0 1.37 1 2.7 1.13 2.88.14.18 1.95 3.1 4.8 4.2 2.4.93 2.88.75 3.4.7.52-.05 1.68-.69 1.92-1.35.24-.66.24-1.23.17-1.35-.07-.12-.26-.2-.55-.34s-1.68-.83-1.94-.92c-.26-.1-.45-.14-.64.14-.19.28-.74.92-.9 1.1-.17.2-.33.22-.62.07-.28-.14-1.2-.44-2.28-1.4-.85-.76-1.42-1.7-1.58-1.98-.17-.28-.02-.44.12-.58.13-.12.28-.33.43-.5.14-.17.19-.28.28-.47.1-.2.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.49z"/></svg></a><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
+<button class="fab chat" type="button" data-chat aria-label="Chat with us" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 10.5h8"/></svg></button>
+<div class="mbar"><button class="btn btn-line msg" type="button" data-chat aria-label="Chat with us" aria-expanded="false" aria-controls="chatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H10l-5 4v-4H4z"/><path d="M8 10.5h8"/></svg></button><a class="btn btn-dark" href="#contact">Enquire with us</a></div>
+<section class="chat-panel" id="chatPanel" hidden aria-label="Chat with Rosa Rose Design">
+  <div class="chat-head"><b>Chat with us</b><button class="chat-x" type="button" aria-label="Close chat">&times;</button></div>
+  <div class="chat-body"><div class="chat-msg">Hi, how can we help with your home today?</div></div>
+  <form class="chat-form" id="chatForm" novalidate>
+    <input type="text" placeholder="Your name" aria-label="Your name">
+    <input type="email" placeholder="Your email" aria-label="Your email">
+    <textarea placeholder="Write your message" aria-label="Your message"></textarea>
+    <button class="btn btn-dark" type="submit">Send</button>
+  </form>
+  <div class="chat-thanks" id="chatThanks">Thanks for your message. We'll reply soon.</div>
+</section>
 
 <script>
 (function(){
@@ -623,6 +662,17 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
   if(cf) cf.addEventListener('submit', function(e){ e.preventDefault(); cf.style.display = 'none'; document.getElementById('thanks').classList.add('show'); });
   var sf = document.getElementById('subForm');
   if(sf) sf.addEventListener('submit', function(e){ e.preventDefault(); document.getElementById('subThanks').style.display = 'block'; });
+})();
+
+(function(){
+  var p=document.getElementById('chatPanel'); if(!p) return;
+  var btns=Array.prototype.slice.call(document.querySelectorAll('[data-chat]'));
+  function set(open){ p.hidden=!open; btns.forEach(function(b){ b.setAttribute('aria-expanded', open?'true':'false'); }); }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ set(p.hidden); }); });
+  p.querySelector('.chat-x').addEventListener('click', function(){ set(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !p.hidden) set(false); });
+  var f=document.getElementById('chatForm');
+  f.addEventListener('submit', function(e){ e.preventDefault(); f.style.display='none'; document.getElementById('chatThanks').style.display='block'; });
 })();
 
 (function(){
