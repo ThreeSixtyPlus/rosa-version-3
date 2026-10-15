@@ -182,6 +182,12 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
 .contact-info a.wa-btn:hover svg{color:#fff}
 .mbar .msg.wa{background:#25D366;border-color:#25D366;color:#fff}
 
+/* phones: no scroll-drift, so circles and step text never overlap */
+@media (max-width:900px){
+  [data-speed]{transform:none!important}
+  .cta-split .cta-pic img{top:0;height:100%}
+}
+
 /* ---- home page ---- */
 .intro-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(36px,6vw,100px);align-items:center}
 .intro-text .btn-row{margin-top:30px}
@@ -575,7 +581,9 @@ footer{background:var(--alt);padding:60px 0 40px;border-top:1px solid var(--line
     var ticking = false;
     function para(){
       var vh = window.innerHeight;
+      var wide = window.innerWidth > 900;
       par.forEach(function(el){
+        if(!wide){ el.style.transform = ''; return; }
         var r = el.getBoundingClientRect();
         if(r.bottom < -200 || r.top > vh + 200) return;
         var s = parseFloat(el.getAttribute('data-speed'));
